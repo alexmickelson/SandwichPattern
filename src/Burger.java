@@ -1,34 +1,24 @@
 import java.security.InvalidParameterException;
 
-public class Subway extends Sandwich {
-    public Subway(String bread, String meat, String cheese, String[] hotToppings,
+public class Burger extends Sandwich {
+
+    public Burger(String bread, String meat, String cheese, String[] hotToppings,
                   String[] toppings, String[] sauce, String prepare) {
         super(bread, meat, cheese, hotToppings, toppings, sauce, prepare);
     }
 
     @Override
     public void bread(String bread) {
-        switch (bread.toLowerCase()){
-            case "italian":
-            case "flat":
-            case "wheat":
-                System.out.println("Using "+bread+" Bread");
-                break;
-            default:
-                throw new InvalidParameterException("Wrong kind of bread: "+bread);
-        }
+        System.out.println("Using burger bun");
 
     }
 
     @Override
     public void meat(String meat) {
         switch (meat.toLowerCase()){
-            case "pepperoni":
-            case "salami":
-            case "meatballs":
-            case "turkey":
-            case "ham":
             case "chicken":
+            case "quarter pound hamburger":
+            case "half pound hamburger":
                 System.out.println("Using "+meat+" meat");
                 break;
             default:
@@ -40,10 +30,8 @@ public class Subway extends Sandwich {
     @Override
     public void cheese(String cheese) {
         switch (cheese.toLowerCase()){
-            case "pepperjack":
             case "american":
             case "cheddar":
-            case "provolone":
                 System.out.println("Using "+cheese+" cheese");
                 break;
             default:
@@ -56,12 +44,10 @@ public class Subway extends Sandwich {
     public void toppings(String[] toppings) {
         for (String topping : toppings) {
             switch (topping.toLowerCase()){
-                case "cucumbers":
-                case "spinach":
                 case "lettuce":
-                case "peppers":
-                case "jalapenos":
-                case "olives":
+                case "pickles":
+                case "onions":
+                case "tomatoes":
                     System.out.println("Using "+topping+" topping");
                     break;
                 default:
@@ -78,9 +64,8 @@ public class Subway extends Sandwich {
             switch (s.toLowerCase()){
                 case "mayo":
                 case "mayonnaise":
-                case "oil":
                 case "mustard":
-                case "ranch":
+                case "ketchup":
                     System.out.println("Using "+s+" topping");
                     break;
                 default:
@@ -93,12 +78,37 @@ public class Subway extends Sandwich {
 
     @Override
     public void prepare(String prepare) {
-        System.out.println("Wrapping to go");
+        switch (prepare.toLowerCase()){
+            case "go":
+                System.out.println("Preparing to go");
+                break;
+            case "stay":
+                System.out.println("Preparing to stay");
+                break;
+            default:
+                throw new InvalidParameterException("Wrong kind of prep: "+prepare);
+        }
 
     }
 
     @Override
     public void cook() {
-        System.out.println("Toasting in toaster oven");
+        System.out.println("Grilling");
+    }
+
+    @Override
+    public void hotToppings(String[] hotToppings){
+
+        for (String s : hotToppings) {
+            switch (s.toLowerCase()){
+                case "grilledonions":
+                case "meltedcheese":
+                    System.out.println("Using "+s+" hot topping");
+                    break;
+                default:
+                    throw new InvalidParameterException("Wrong kind of hot topping: "+s);
+            }
+
+        }
     }
 }

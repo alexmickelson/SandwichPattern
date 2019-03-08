@@ -1,6 +1,7 @@
 public abstract class Sandwich {
 
-    public Sandwich(String bread, String meat, String cheese, String[] hotToppings, String[] toppings, String[] sauce){
+    public Sandwich(String bread, String meat, String cheese, String[] hotToppings,
+                    String[] toppings, String[] sauce, String prepare){
         bread(bread);
         meat(meat);
         cheese(cheese);
@@ -8,7 +9,7 @@ public abstract class Sandwich {
         hotToppings(hotToppings);
         toppings(toppings);
         sauce(sauce);
-        prepare();
+        prepare(prepare);
     }
 
     public abstract void bread(String bread);
@@ -18,7 +19,7 @@ public abstract class Sandwich {
     public abstract void sauce(String[] sauce);
 
 
-    public abstract void prepare();
+    public abstract void prepare(String prepare);
     public abstract void cook();
 
     public void hotToppings(String[] hotToppings){}
